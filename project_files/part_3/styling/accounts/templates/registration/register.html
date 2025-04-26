@@ -1,0 +1,26 @@
+{% extends "learning_logs/base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/register-style.css">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="register-container">
+  <div class="register-header">
+    <h2 class="register-title">Join Learning Log</h2>
+    <p class="register-subtitle">Create an account to start tracking your learning journey</p>
+  </div>
+
+  <form action="{% url 'accounts:register' %}" method='post' class="register-form">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button name="submit" class="register-button">Register</button>
+    
+    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+  </form>
+  
+  <div class="login-prompt">
+    Already have an account? <a href="{% url 'accounts:login' %}" class="login-link">Log in</a>
+  </div>
+</div>
+{% endblock content %}
