@@ -1,0 +1,35 @@
+{% extends "learning_logs/base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/new_entry-style.css">
+{% endblock extra_css %}
+
+{# No page_header block needed here, we'll put the heading inside content #}
+
+{% block content %}
+<div class="new-entry-container"> {# Main container for the page content #}
+
+    <div class="form-section"> {# Container specifically for the form and its heading #}
+        <h2 class="form-heading">Add a new entry for <span class="topic-title-in-heading">"{{ topic.text }}"</span></h2> {# Heading inside the container #}
+
+        {# Removed the extra <p> tag with the link here, will add a "Back to topic" link later #}
+        {# Removed the "Add a new entry:" <p> tag as it's now the <h2> #}
+
+        <form action="{% url 'learning_logs:new_entry' topic.id %}" method='post' class="entry-form">
+            {% csrf_token %}
+            {# form.as_div renders label, input/textarea, errors inside divs #}
+            {{ form.as_div }}
+
+            <div class="form-actions"> {# Container for the submit button #}
+                <button name='submit' class="submit-button">Add entry</button>
+            </div>
+        </form>
+    </div>
+
+    {# Add a link back to the topic after the form section #}
+    <p class="back-to-topic-link">
+        <a href="{% url 'learning_logs:topic' topic.id %}" class="cancel-link">Back to topic</a> {# Using cancel-link style #}
+    </p>
+
+</div>
+{% endblock content %}

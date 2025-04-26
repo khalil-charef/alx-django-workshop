@@ -1,0 +1,243 @@
+/* --- topic.css --- */
+/* Styles specific to the single topic page */
+
+/* Assume CSS variables like --primary-color, --accent-color, --text-color,
+   --text-muted, --border-color, --white-color, --transition-speed are defined in a base/global CSS file. */
+
+   .topic-container {
+    max-width: 900px; /* Allow slightly more width than topics list */
+    margin: 2rem auto; /* Center the container */
+    padding: 0 1rem; /* Add some padding on the sides */
+}
+
+/* Page Header (Topic Title) */
+.topic-container h1 {
+    text-align: center;
+    color: var(--primary-color); /* Use primary color for heading */
+    margin-bottom: 1.5rem;
+    font-size: 2.8rem; /* Slightly larger than topics list heading */
+    font-weight: 700;
+    word-break: break-word; /* Prevent long titles from overflowing */
+}
+
+/* Optional: Topic Description */
+/*
+.topic-description {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+*/
+
+/* Entry Count */
+.entry-count {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-top: -1rem; /* Adjust spacing relative to title */
+    margin-bottom: 2rem; /* Space below count */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.entry-count-badge {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-color); /* Dark text on accent */
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.2em 0.6em;
+    border-radius: 50px; /* Pill shape */
+    min-width: 20px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+
+/* Add New Entry Button */
+.add-entry-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color); /* Use primary for main action */
+    color: var(--white-color); /* White text on primary */
+    padding: 0.9rem 2rem;
+    border-radius: 50px; /* Pill shape */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid var(--primary-color);
+    transition: all var(--transition-speed) ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 68, 148, 0.2); /* Primary-themed shadow */
+    margin-bottom: 2.5rem; /* Space below button */
+    /* Center the button */
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-entry-button:hover,
+.add-entry-button:focus {
+    background-color: var(--primary-hover); /* Use primary hover color */
+    border-color: var(--primary-hover);
+    color: var(--white-color);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 7px 15px rgba(0, 68, 148, 0.3);
+    outline: none;
+}
+
+
+/* Entry Cards */
+.entry-card {
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Match card border-radius */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1.5rem; /* Space between entries */
+    padding: 1.5rem;
+    transition: box-shadow var(--transition-speed) ease;
+}
+
+.entry-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow increase on hover */
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color); /* Separator */
+    padding-bottom: 0.8rem;
+}
+
+.entry-date {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.edit-link {
+    color: var(--primary-color); /* Use primary color for edit link */
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transition-speed) ease;
+}
+
+.edit-link:hover {
+    color: var(--primary-hover); /* Darker primary on hover */
+    text-decoration: underline;
+}
+
+.entry-body {
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 1rem;
+    word-break: break-word; /* Prevent long words from overflowing */
+}
+
+/* Empty State for Entries */
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.02); /* Very light background */
+    margin-bottom: 2rem;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block; /* Standard link behavior */
+    margin-top: 2rem; /* Space above the link */
+    color: var(--text-muted); /* Muted color for less emphasis */
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color var(--transition-speed) ease;
+    padding: 0.5rem 0; /* Make clickable area larger */
+}
+
+.back-link:hover {
+    color: var(--text-color); /* Slightly darker on hover */
+    text-decoration: underline;
+}
+
+/* Center the back link if desired */
+/*
+.topic-container .back-link {
+     display: block;
+     width: fit-content;
+     margin-left: auto;
+     margin-right: auto;
+}
+*/
+
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 768px) {
+    .topic-container {
+        margin-top: 1.5rem;
+    }
+
+    .topic-container h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .entry-card {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .entry-header {
+        flex-direction: column; /* Stack date and edit link */
+        align-items: flex-start;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.6rem;
+    }
+
+    .entry-date {
+        margin-bottom: 0.4rem; /* Space between date and edit link */
+    }
+
+    .add-entry-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+     .entry-body {
+        font-size: 0.95rem;
+    }
+
+    .back-link {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .topic-container h1 {
+        font-size: 1.9rem;
+    }
+
+    .entry-card {
+        border-radius: 6px;
+    }
+
+    .add-entry-button {
+        width: 100%; /* Make button full width */
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

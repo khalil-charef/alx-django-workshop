@@ -1,0 +1,222 @@
+/* --- Google Font Import (if you didn't link in HTML head) --- */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap'); */
+
+/* --- Base & Resets --- */
+:root {
+  /* Define color palette */
+  --primary-color: #0056b3; /* Deep Blue */
+  --primary-hover: #004494;
+  --secondary-color: #f8f9fa; /* Very Light Gray */
+  --accent-color: #ffc107; /* Amber/Yellow */
+  --text-color: #343a40; /* Dark Gray */
+  --text-muted: #6c757d; /* Medium Gray */
+  --border-color: #dee2e6; /* Light Gray Border */
+  --white-color: #ffffff;
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
+
+  /* Define font */
+  --font-family-base: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Define transitions */
+  --transition-speed: 0.2s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--secondary-color); /* Light background for body */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+main.content-area {
+  flex-grow: 1; /* Make main content area take available space */
+  padding: 2rem 1.5rem; /* Add some padding */
+}
+
+/* --- Header & Navbar --- */
+.site-header {
+  background-color: var(--white-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky; /* Make header stick on scroll */
+  top: 0;
+  z-index: 1000; /* Ensure it's above other content */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Pushes main and user lists apart */
+  align-items: center;
+  padding: 0.5rem 1.5rem; /* Vertical and horizontal padding */
+  max-width: 1200px; /* Optional: constrain navbar width */
+  margin: 0 auto; /* Center navbar if max-width is set */
+}
+
+/* --- Navigation Lists & Items --- */
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between items in the list */
+}
+
+
+/* --- Navigation Links & Logo --- */
+.nav-link {
+  display: inline-block;
+  padding: 0.6rem 1rem; /* Comfortable padding */
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 700; /* Bolder links */
+  border-radius: 5px;
+  transition: color var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease-in-out;
+  position: relative; /* For potential pseudo-element effects */
+  overflow: hidden; /* Helps with effects */
+}
+
+.nav-link::before { /* Subtle underline effect */
+  content: '';
+  position: absolute;
+  bottom: 5px; /* Position underline slightly above bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width var(--transition-speed) ease-out;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active { /* Style for hover, focus, and active state */
+  color: var(--primary-color);
+  background-color: rgba(0, 86, 179, 0.05); /* Very subtle background tint */
+  outline: none; /* Remove default focus outline if custom style is clear */
+}
+
+.nav-link:hover::before,
+.nav-link:focus::before,
+.nav-link.active::before {
+  width: 70%; /* Expand the underline on hover/focus/active */
+}
+
+.nav-link.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding-left: 0; /* Less padding if it's the first item */
+  padding-right: 1rem;
+}
+.nav-link.logo:hover,
+.nav-link.logo:focus {
+  background-color: transparent; /* Don't tint logo background */
+}
+.nav-link.logo::before {
+  display: none; /* No underline for logo */
+}
+
+
+/* --- User Actions Area --- */
+.navbar-greeting {
+  color: var(--text-muted);
+  margin-right: 0.5rem; /* Space between greeting and button */
+  font-style: italic;
+}
+
+.logout-form {
+  margin: 0; /* Remove default form margins */
+  padding: 0;
+  display: inline-block; /* Keep form layout contained */
+}
+
+/* Base button style (can be reused) */
+.nav-button {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+  font-size: 1em; /* Match link font size */
+  font-weight: 700; /* Match link weight */
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out, border-color var(--transition-speed) ease-in-out;
+  appearance: none; /* Override default browser styles */
+  -webkit-appearance: none;
+}
+
+/* Specific Logout Button Style */
+.logout-button {
+  background-color: transparent;
+  color: var(--danger-color);
+  border-color: var(--danger-color);
+}
+
+.logout-button:hover,
+.logout-button:focus {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+  border-color: var(--danger-color);
+  outline: none;
+}
+
+/* --- Footer --- */
+.site-footer-bottom {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin-top: 2rem; /* Space above footer */
+  background-color: var(--text-color); /* Dark footer */
+  color: var(--secondary-color); /* Light text */
+  font-size: 0.9em;
+}
+
+.site-footer-bottom p {
+  margin: 0;
+}
+
+/* --- Optional: Basic Responsiveness --- */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column; /* Stack lists vertically */
+      align-items: flex-start; /* Align items to the start */
+      padding: 0.5rem 1rem;
+  }
+
+  .nav-list {
+      width: 100%; /* Make lists take full width */
+      justify-content: flex-start; /* Align items to start */
+      padding: 0.5rem 0; /* Add some vertical padding */
+      gap: 0.2rem; /* Reduce gap */
+  }
+
+  .nav-list-main {
+      border-bottom: 1px solid var(--border-color); /* Separator line */
+      margin-bottom: 0.5rem;
+  }
+
+
+  .nav-link, .nav-button {
+      padding: 0.5rem 0.8rem; /* Slightly smaller padding */
+  }
+
+   .nav-link.logo {
+      font-size: 1.2rem;
+   }
+
+   .navbar-greeting {
+       display: block; /* Maybe stack greeting */
+       margin-bottom: 0.5rem;
+   }
+}

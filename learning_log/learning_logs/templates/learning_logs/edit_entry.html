@@ -1,0 +1,35 @@
+{% extends "learning_logs/base.html" %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/edit_entry-style.css">
+{% endblock extra_css %}
+
+{# No page_header block needed here #}
+
+{% block content %}
+<div class="edit-entry-container"> {# Main container for the page content #}
+
+    <div class="form-section"> {# Container specifically for the form and its heading #}
+        <h2 class="form-heading">Edit entry for <span class="topic-title-in-heading">"{{ topic.text }}"</span></h2> {# Heading inside the container #}
+
+        {# Removed the extra <p> tags #}
+
+        <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post' class="entry-form"> {# Reusing class name from new_entry for consistency #}
+            {% csrf_token %}
+            {# form.as_div renders label, input/textarea, errors inside divs #}
+            {{ form.as_div }}
+
+            <div class="form-actions"> {# Container for the submit button and potential cancel #}
+                <button name='submit' class="submit-button">Save changes</button> {# Reusing class name #}
+                {# Optional: Add a Cancel button/link here if desired, e.g., <a href="..." class="cancel-button">Cancel</a> #}
+            </div>
+        </form>
+    </div>
+
+    {# Add a link back to the topic after the form section #}
+    <p class="back-to-topic-link"> {# Reusing class name #}
+        <a href="{% url 'learning_logs:topic' topic.id %}" class="cancel-link">Cancel</a> {# Reusing class name, text "Cancel" #}
+    </p>
+
+</div>
+{% endblock content %}

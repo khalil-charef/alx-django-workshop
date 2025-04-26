@@ -1,0 +1,169 @@
+/* --- login.css --- */
+/* Styles for the login page form */
+
+/* --- Login Container: Card Layout & Centering --- */
+.login-container {
+  background-color: var(--white-color);
+  padding: 2.5rem 3rem; /* Comfortable padding inside the card */
+  border-radius: 10px; /* Soft rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  width: 100%; /* Responsive width */
+  max-width: 450px; /* Max width for the login box */
+  margin: 4rem auto; /* Center the box horizontally and add space top/bottom */
+  text-align: center; /* Center title/subtitle */
+  border: 1px solid var(--border-color); /* Subtle border */
+}
+
+/* --- Login Header --- */
+.login-header {
+  margin-bottom: 2rem; /* Space below the header */
+}
+
+.login-title {
+  font-size: 1.9rem; /* Clear title size */
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0; /* Adjust margins */
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* --- Form Error Message --- */
+.form-error {
+  background-color: rgba(220, 53, 69, 0.1); /* Light red background (using var(--danger-color) opacity) */
+  color: var(--danger-color); /* Use danger color for text */
+  border: 1px solid rgba(220, 53, 69, 0.3); /* Subtle red border */
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem; /* Space below error message */
+  text-align: left; /* Align error text left */
+}
+
+.form-error p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --- Form Styling --- */
+.login-form {
+  text-align: left; /* Align form elements to the left */
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Space between each field group */
+  position: relative; /* For potential icon positioning */
+}
+
+.form-label {
+  display: block;
+  font-weight: 600; /* Slightly bolder labels */
+  color: var(--text-muted); /* Muted label color */
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem; /* Smaller label */
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1rem; /* Comfortable input padding */
+  font-size: 1rem;
+  font-family: inherit; /* Ensure font consistency */
+  color: var(--text-color);
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  transition: border-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+}
+
+/* Input Focus Style */
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  /* Subtle glow effect */
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+/* Optional: Style placeholder text if you add placeholders */
+.form-control::placeholder {
+  color: #adb5bd; /* Lighter muted color */
+  opacity: 1;
+}
+
+/* --- Login Button --- */
+.login-button {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--transition-speed) ease-in-out, border-color var(--transition-speed) ease-in-out, transform var(--transition-speed) ease;
+  margin-top: 0.5rem; /* Add a little space above button */
+}
+
+.login-button:hover,
+.login-button:focus {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-2px); /* Subtle lift on hover */
+  outline: none;
+}
+
+.login-button:active {
+  transform: translateY(0); /* Button presses down */
+}
+
+
+/* --- Register Prompt --- */
+.register-prompt {
+  margin-top: 2.5rem; /* More space above the prompt */
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color); /* Separator line */
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.register-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-speed) ease;
+}
+
+.register-link:hover,
+.register-link:focus {
+  color: var(--primary-hover);
+  text-decoration: underline;
+  outline: none;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 576px) {
+  .login-container {
+      padding: 2rem 1.5rem; /* Reduce padding on small screens */
+      margin: 2rem auto; /* Reduce top/bottom margin */
+      box-shadow: none; /* Optional: remove shadow on mobile */
+      border: none; /* Optional: remove border on mobile */
+      background-color: transparent; /* Optional: make background transparent */
+  }
+
+  .login-title {
+      font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 400px) {
+   .login-container {
+      padding: 1.5rem 1rem;
+   }
+}
