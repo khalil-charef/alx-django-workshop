@@ -1,0 +1,41 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/topic-style.css">
+{% endblock extra_css %}
+
+{% block page_header %}
+    <h1>{{ topic.text }}</h1>
+{% endblock page_header %}
+
+{% block content %}
+<div class="topic-container">
+    <!-- Optional: Topic description could be added here if you update your model -->
+    <!-- <div class="topic-description">{{ topic.description }}</div> -->
+    
+    {% if entries %}
+    <div class="entry-count">
+        {{ entries|length }} entr{{ entries|length|pluralize:"y,ies" }}
+        <span class="entry-count-badge">{{ entries|length }}</span>
+    </div>
+    {% endif %}
+    
+    <a href="{% url 'learning_logs:new_entry' topic.id %}" class="add-entry-button">Add new entry</a>
+    
+    {% for entry in entries %}
+    <div class="entry-card">
+        <div class="entry-header">
+            <span class="entry-date">{{ entry.date_added|date:'M d, Y H:i' }}</span>
+            <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="edit-link">
+                Edit entry
+            </a>
+        </div>
+        <div class="entry-body">{{ entry.text|linebreaks }}</div>
+    </div>
+    {% empty %}
+        <div class="empty-state">There are no entries for this topic yet.</div>
+    {% endfor %}
+   
+    <a href="{% url 'learning_logs:topics' %}" class="back-link">Back to topics</a>
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/topics-style.css">
+{% endblock extra_css %}
+
+
+{% block page_header %}
+    <h1>Topics</h1>
+{% endblock page_header %}
+
+{% block content %}
+<div class="topics-container">
+    <!-- Optional: Search Box -->
+    <!-- <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" placeholder="Search topics...">
+    </div> -->
+    
+    {% if topics %}
+        <p class="topic-count">{{ topics|length }} topic{{ topics|length|pluralize }} available</p>
+    {% endif %}
+    
+    <ul class="topic-list">
+        {% for topic in topics %}
+        <li class="topic-item">
+            <a href="{% url 'learning_logs:topic' topic.id %}" class="topic-link">
+                {{ topic.text }}
+            </a>
+        </li>
+        {% empty %}
+            <li class="empty-state">No topics have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'learning_logs:new_topic' %}" class="new-topic-button">Add a new topic</a>
+</div>
+{% endblock content %}

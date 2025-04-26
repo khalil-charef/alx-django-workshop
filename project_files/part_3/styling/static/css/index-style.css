@@ -1,0 +1,211 @@
+/* --- index.css --- */
+
+
+/* --- Hero Section --- */
+.hero-section {
+    /* Creative Background - Example: Subtle Gradient */
+    background: linear-gradient(140deg, rgba(0, 86, 179, 0.85), rgba(0, 68, 148, 0.95)), url('/static/images/notebook-bg.jpg'); /* Add a fallback color/image */
+    background-color: var(--primary-color); /* Fallback color */
+    background-size: cover; /* Cover the entire section */
+    background-position: center center; /* Center the background */
+    color: var(--white-color);
+    padding: 6rem 2rem; /* Generous vertical padding */
+    margin-bottom: 4rem; /* Space below the hero */
+    border-radius: 8px; /* Soft rounded corners */
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 68, 148, 0.3); /* Slightly stronger shadow */
+    position: relative; /* For potential pseudo-elements */
+    overflow: hidden; /* Keep effects contained */
+}
+
+/* Optional: Add a subtle overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Very subtle dark overlay */
+    z-index: 1;
+}
+
+/* Ensure content is above the overlay */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px; /* Constrain content width for readability */
+    margin: 0 auto; /* Center content */
+}
+
+.hero-title {
+    font-size: 3rem; /* Large, impactful title */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95; /* Make it slightly less prominent than title */
+    font-weight: 400; /* Regular weight */
+}
+
+/* --- Call to Action (CTA) Button --- */
+.cta-button {
+    display: inline-flex; /* Use flex to align icon and text */
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: var(--text-color); /* Dark text on accent */
+    padding: 0.9rem 2rem; /* Slightly larger padding */
+    border-radius: 50px; /* Pill shape */
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid var(--accent-color);
+    transition: all var(--transition-speed) ease-in-out; /* Animate all properties */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cta-button i.fas { /* Target Font Awesome icons */
+    margin-right: 0.75rem; /* Space between icon and text */
+    font-size: 1em; /* Match button text size */
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: #ffcd39; /* Slightly lighter accent */
+    border-color: #ffcd39;
+    color: var(--text-color);
+    transform: translateY(-3px) scale(1.02); /* Lift and slightly enlarge */
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* --- Features Section --- */
+.features-section {
+    padding: 2rem 0; /* Vertical padding for the section */
+    margin-bottom: 3rem; /* Space below features */
+}
+
+.features-grid {
+    display: grid;
+    /* Responsive Grid: try to fit columns of at least 280px, let them grow equally */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem; /* Generous gap between cards */
+}
+
+/* --- Feature Card Styling --- */
+.feature-card {
+    background-color: var(--white-color);
+    padding: 2.5rem 1.8rem; /* More padding */
+    border-radius: 10px; /* Slightly more rounded */
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07); /* Default subtle shadow */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: flex; /* Use flexbox for vertical alignment */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Stronger shadow on hover */
+}
+
+.feature-icon {
+    font-size: 3rem; /* Larger icons */
+    color: var(--primary-hover); /* Use a slightly darker primary for icons */
+    margin-bottom: 1.5rem;
+    display: inline-block; /* Ensure proper rendering */
+    line-height: 1; /* Prevent extra space */
+    /* Creative touch: subtle animation on icon itself within hover */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.15) rotate(-8deg); /* Scale up and slightly rotate icon */
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-top: 0; /* Reset margin */
+    margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1rem;
+    flex-grow: 1; /* Allows paragraphs to push title/icon up if cards have different heights */
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.6rem;
+    }
+    .hero-subtitle {
+        font-size: 1.15rem;
+    }
+    .hero-section {
+        padding: 5rem 1.5rem;
+    }
+    .features-grid {
+        gap: 2rem; /* Reduce gap slightly */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    .hero-section {
+        padding: 4rem 1rem;
+        margin-bottom: 3rem;
+    }
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    .features-grid {
+        /* Grid already handles stacking well, adjust gap if needed */
+        gap: 1.5rem;
+    }
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+    .feature-title {
+        font-size: 1.3rem;
+    }
+    .feature-icon {
+        font-size: 2.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.9rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+    /* Optional: Make cards full width if desired */
+    /* .features-grid {
+        grid-template-columns: 1fr;
+    } */
+}

@@ -1,0 +1,30 @@
+{% extends "learning_logs/base.html" %}
+
+
+{% block extra_css %}
+  <link rel="stylesheet" href="/static/css/new_topic-style.css">
+{% endblock extra_css %}
+
+
+{% block page_header %}
+<h2>Create a New Topic</h2>
+{% endblock page_header %}
+
+{% block content %}
+<div class="form-container">
+  <div class="form-header">
+    <h3 class="form-title">Add a new topic</h3>
+    <p class="form-subtitle">Create a new topic to organize your learning entries</p>
+  </div>
+
+  <form action="{% url 'learning_logs:new_topic' %}" method='post' class="topic-form">
+    {% csrf_token %}
+    {{ form.as_div }}
+    
+    <div class="form-actions">
+      <button name="submit" class="submit-button">Add topic</button>
+      <a href="{% url 'learning_logs:topics' %}" class="cancel-link">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock content %}
